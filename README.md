@@ -66,6 +66,12 @@ Install WAMP Server to run application on local.
 
 Copy all project folder into `www` folder of WAMP Server.
 
+Click icon server --> Apache --> httpd-vhosts.conf --> 
+```
+${INSTALL_DIR}/www/public"
+```
+Restart server 
+
 Access application at `http://localhost`
 
 ## More information
