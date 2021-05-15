@@ -5,15 +5,18 @@
     />
     <button type="submit" class="btn btn-primary"> Search </button>
 </form>
-<ul class="mt-5">
+<div class="mt-5 d-flex flex-column">
     <?php
     foreach ($categories as $category) {
     ?>
+    <div>
         <a href = "/book/index?selected_category=<?php echo $category['name']; ?>"><?php echo $category['name']; ?></a>
+    </div>
+       
         <?php
     }
     ?>
-</ul>
+</div>
 <table class = "table">
     <thead>
     <tr>

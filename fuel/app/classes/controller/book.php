@@ -33,7 +33,7 @@ class Controller_Book extends Controller_Template {
             }else{
                 $books = Model_Book::find('all', array(
                     'where' => array(
-                        array('title', 'LIKE', $search_book_name.'%')
+                        array('title', 'LIKE', '%'.$search_book_name.'%')
                     )
                 ));
             }
@@ -52,7 +52,7 @@ class Controller_Book extends Controller_Template {
             }else{
                 $books = Model_Book::find('all', array(
                     'where' => array(
-                        array('title', 'LIKE', $search_book_name.'%')
+                        array('title', 'LIKE',  '%'.$search_book_name.'%')
                     ),
                     'related' => array(
                         'category' => array(

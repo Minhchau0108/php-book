@@ -36,7 +36,7 @@ class Model_Book extends Orm\Model {
                 'required',
             ),
             'form' => array (
-                'type' => 'text'
+                'type' => 'number'
             ),
         ),
         'category_id' => array (
