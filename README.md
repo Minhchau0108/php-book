@@ -49,7 +49,7 @@ create table if not exists `sessions`
     unique key `PREVIOUS` (`previous_id`)
 );
 
-INSERT INTO category(code, name)
+INSERT INTO category(name)
 values ('fantasy'),
        ('romance'),
        ('literature');
