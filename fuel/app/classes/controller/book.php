@@ -53,6 +53,13 @@ class Controller_Book extends Controller_Template {
                 $books = Model_Book::find('all', array(
                     'where' => array(
                         array('title', 'LIKE', $search_book_name.'%')
+                    ),
+                    'related' => array(
+                        'category' => array(
+                            'where' => array(
+                                array('name', '=', $selected_category)
+                            )
+                        )
                     )
                 ));
             }
