@@ -73,7 +73,7 @@ VALUES ('The C Programming Language',
         30.00,
         2);
 ```
-
+!!!! After register a user, change group id to 100
 Install WAMP Server to run application on local.
 
 Copy all project folder into `www` folder of WAMP Server.
