@@ -52,7 +52,7 @@ create table if not exists `sessions`
 INSERT INTO category(code, name)
 values ('fantasy'),
        ('romance'),
-       ('literature'),;
+       ('literature');
 
 INSERT INTO books(title, author, price, category_id)
 VALUES ('The C Programming Language',
