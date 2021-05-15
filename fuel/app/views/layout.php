@@ -32,8 +32,11 @@
         <div id = "navbar" class = "collapse navbar-collapse">
             <ul class = "nav navbar-nav">
                 <li class = "active"><a href = "/book/index">Home</a></li>
-                <li><a href = "/book/add">Add book</a></li>
+                <?php if (Auth::member(100)): ?>
+                    <li><a href = "/book/addBook">Add book</a></li>
+                <?php endif; ?>
                 <li><a href="/login/logout">Log out</a></li>
+                <li><a href="#">Welcome <?php echo Auth::get_screen_name() ?></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
