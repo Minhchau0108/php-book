@@ -52,7 +52,7 @@ create table if not exists `sessions`
 INSERT INTO category(code, name)
 values ('fantasy'),
        ('romance'),
-       ('literature'),;
+       ('literature');
 
 INSERT INTO books(title, author, price, category_id)
 VALUES ('The C Programming Language',
@@ -73,7 +73,7 @@ VALUES ('The C Programming Language',
         30.00,
         2);
 ```
-
+!!!! After register a user, change group id to 100
 Install WAMP Server to run application on local.
 
 Copy all project folder into `www` folder of WAMP Server.
