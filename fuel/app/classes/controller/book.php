@@ -174,14 +174,13 @@ class Controller_Book extends Controller_Template {
             Response::redirect('book'); 
          } 
 
-         public function action_hireBook($id = false) { 
-            if(!($book = Model_Book::find($id))) { 
-               throw new HttpNotFoundException(); 
-            }  
-            $view = View::forge('book/hireBook'); 
-            $view->set('book', $book);
-         
-            $this->template->title = "Book hire page"; 
+         public function action_hireBook() { 
+            $arrayBook= \Input::post('arrayBook');
+
+           
+            $view = View::forge('book/hireBook');
+            $view->set('arrayBook', $arrayBook);
+            $this->template->title = "Checkout page"; 
             $this->template->content = $view; 
         }
 }

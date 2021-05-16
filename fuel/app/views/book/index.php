@@ -1,3 +1,19 @@
+<style>
+label {
+  width: 100px;
+  background:  	#A9A9A9;
+  color:#FFFAFA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+input:checked ~ label {
+  background: #2522CA; 
+}
+</style>
+
 <form method="get" action="/book/index">
     <input type="text" class="form-control" id="search"
            placeholder="Search book" name="search_book_name"
@@ -17,6 +33,8 @@
     }
     ?>
 </div>
+<form method="POST" action="/book/hireBook">
+
 <table class = "table">
     <thead>
     <tr>
@@ -48,8 +66,8 @@
             <?php endif; ?>
             <?php if (!Auth::member(100)): ?>
             <td>
-                <a href = "/book/hireBook/<?php echo $book['id']; ?>">Hire Book</a>
-              
+                <input type="checkbox" id="<?php echo $book['id']; ?>" value="<?php echo $book['id']; ?>" name="arrayBook[]" hidden/>
+                <label for="<?php echo $book['id']; ?>">Select</label>
             </td>
             <?php endif; ?>
            
@@ -59,5 +77,8 @@
     ?>
     </tbody>
 </table>
+<button type="submit" name="submit">Check out</button>
+</form>
+
 <ul>
 </ul>

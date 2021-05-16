@@ -4,18 +4,11 @@
 <div>
     Username : <?php echo Auth::get_screen_name() ?>
 </div>
-<div>
-    Book Id : <?php echo $book['id']; ?>
-</div>
-<div>
-    Title : <?php echo $book['title']; ?>
-</div>
-<div>
-    Author: <?php echo $book['author']; ?>
-</div>
-<div>
-    Price: <?php echo $book['price']; ?>
-</div>
-      
-      
- 
+<h3>List books</div>
+<?php
+    foreach($arrayBook as $item) {
+        ?>
+       <div> id <?php echo $item; ?></div>
+    <?php
+    }
+    ?>
