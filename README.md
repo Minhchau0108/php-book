@@ -9,6 +9,7 @@ Run this script in MySQL console or workbench to create database name `book_db` 
 ```mysql
 create database if not exists `book_db`;
 use `book_db`;
+
 create table if not exists `category`
 (
     `id`   INT PRIMARY KEY AUTO_INCREMENT,

@@ -175,12 +175,46 @@ class Controller_Book extends Controller_Template {
          } 
 
          public function action_hireBook() { 
-            $arrayBook= \Input::post('arrayBook');
+            $arrayBook= \Input::post('arrayBook', array());
+            $books = array();
+            if(count($arrayBook) > 0){
+                $books = Model_Book::find('all', array(
+                    'where' => array(
+                        array('id', 'in',  $arrayBook)
+                    ),
+            ));
+            }
 
            
+            $cookie_name="arrayId";
+            $cookie_value=implode(",", $arrayBook);
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
+            
             $view = View::forge('book/hireBook');
-            $view->set('arrayBook', $arrayBook);
+            $view->set('books', $books);
             $this->template->title = "Checkout page"; 
+            $this->template->content = $view; 
+        }
+        public function action_saveOrder(){
+            $phone= \Input::post('phone');
+            $address= \Input::post('address');
+            $cookie_name="arrayId";
+            $arrayIdStr = $_COOKIE[$cookie_name];
+            $arrayId = explode(",",$arrayIdStr);
+            $books = Model_Book::find('all', array(
+                'where' => array(
+                    array('id', 'in',  $arrayId)
+                ),
+            ));
+           
+
+            $view = View::forge('book/orderSave');
+            $view->set('phone', $phone);
+            $view->set('address', $address);
+            $view->set('books',  $books);
+         
+      
+            $this->template->title = "Thank you for your order"; 
             $this->template->content = $view; 
         }
 }

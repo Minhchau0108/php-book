@@ -34,6 +34,9 @@ input:checked ~ label {
     ?>
 </div>
 <form method="POST" action="/book/hireBook">
+<?php if (!Auth::member(100)): ?>
+<button type="submit" name="submit">Check out</button>
+<?php endif; ?>
 
 <table class = "table">
     <thead>
@@ -76,9 +79,5 @@ input:checked ~ label {
     }
     ?>
     </tbody>
-</table>
-<button type="submit" name="submit">Check out</button>
+</table>   
 </form>
-
-<ul>
-</ul>
