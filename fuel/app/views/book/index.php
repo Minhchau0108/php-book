@@ -12,6 +12,10 @@ label {
 input:checked ~ label {
   background: #2522CA; 
 }
+img{
+    width: 100px;
+    height: 100px;
+}
 </style>
 
 <form method="get" action="/book/index">
@@ -45,6 +49,7 @@ input:checked ~ label {
         <th>Title</th>
         <th>Author</th>
         <th>Price</th>
+        <th>Image</th>
         <th>Category ID</th>
         <th></th>
     </tr>
@@ -60,6 +65,7 @@ input:checked ~ label {
             <td><?php echo $book['title']; ?></td>
             <td><?php echo $book['author']; ?></td>
             <td><?php echo $book['price']; ?></td>
+            <td><img src="<?php echo $book['url']; ?>"></img></td>
             <td><?php echo $book['category_id']; ?></td>
             <?php if (Auth::member(100)): ?>
             <td>

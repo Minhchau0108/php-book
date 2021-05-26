@@ -36,7 +36,7 @@
                     <li><a href = "/book/addBook">Add book</a></li>
                 <?php endif; ?>
                 <li><a href="/login/logout">Log out</a></li>
-                <li><a href="#">Welcome <?php echo Auth::get_screen_name() ?></a></li>
+                <li><a href="/book/dashboard">Welcome <?php echo Auth::get_screen_name() ?></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

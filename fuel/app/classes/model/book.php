@@ -39,6 +39,16 @@ class Model_Book extends Orm\Model {
                 'type' => 'number'
             ),
         ),
+        'url' => array (
+            'data_type' => 'varchar',
+            'label' => 'URL Image',
+            'validation' => array (
+                'required',
+            ),
+            'form' => array (
+                'type' => 'text'
+            ),
+        ),
         'category_id' => array (
             'data_type' => 'int',
             'label' => 'Book category',

@@ -206,6 +206,31 @@ class Controller_Book extends Controller_Template {
                     array('id', 'in',  $arrayId)
                 ),
             ));
+
+            $uniqueform = uniqid();
+            try {
+                $form = Model_Form::forge();
+                $form->id =  $uniqueform;
+                $form->user_id = Auth::get_user_id()[1];
+                $form->phone = Input::post('phone');
+                $form->address = Input::post('address');
+                $form->save();
+            } catch (Orm\ValidationFailed $e) {
+                $view->set('errors', $e->getMessage(), false);
+            }
+            try {
+                foreach ($arrayId as $id) {
+                    $detail = Model_Detail::forge();
+                    $detail->form_id =  $uniqueform;
+                    $detail->book_id = $id;
+      
+                    $detail->save();;
+                }
+        
+              
+            } catch (Orm\ValidationFailed $e) {
+                $view->set('errors', $e->getMessage(), false);
+            }
            
 
             $view = View::forge('book/orderSave');
@@ -217,4 +242,41 @@ class Controller_Book extends Controller_Template {
             $this->template->title = "Thank you for your order"; 
             $this->template->content = $view; 
         }
+        public function action_dashboard() { 
+            $forms = Model_Form::find('all', array(
+                    'where' => array(
+                        array('user_id', '=',  Auth::get_user_id()[1])
+                    ),
+            ));
+    
+            $view = View::forge('book/dashboard');
+            $view->set('forms', $forms);
+            $this->template->title = "Your dashboard"; 
+            $this->template->content = $view; 
+        }
+        public function action_detail($id=false) { 
+            $details = Model_Detail::find('all', array(
+                'where' => array(
+                    array('form_id', '=', $id)
+                ),
+            ));
+
+            $arrayId = array();
+            foreach ($details as $detail) {
+               array_push($arrayId, $detail['book_id']);
+            }
+            $books = Model_Book::find('all', array(
+                'where' => array(
+                    array('id', 'in',  $arrayId)
+                ),
+            ));
+
+        
+            $view = View::forge('book/detail');
+
+            $view->set('books', $books);
+             $this->template->title = "Detail form"; 
+             $this->template->content = $view; 
+        }
+
 }
