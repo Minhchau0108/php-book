@@ -33,6 +33,7 @@ return array(
         'identifier'     => '`',
         'table_prefix'   => '',
         'charset'        => 'utf8',
+        'collation'  => 'utf8_unicode_ci',
         'enable_cache'   => true,
         'profiling'      => false,
         'readonly'       => false,
