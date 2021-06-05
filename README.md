@@ -4,7 +4,7 @@
 
 We need to set up database first before starting application.
 
-Run this script in MySQL console or workbench to create database name `book_db` and its tables `books`,`eategory`,`form`, `detail_form`, `users`, `sessions`:
+Run this script in MySQL console or workbench to create database name `book_db` and its tables `books`,`category`,`form`, `detail_form`, `users`, `sessions`:
 
 ```mysql
 create database if not exists `book_db`;
