@@ -18,30 +18,33 @@ img{
 }
 </style>
 
-<form method="get" action="/book/index">
+<ul class="nav nav-pills mb-3">
+    <?php
+    foreach ($categories as $category) {
+    ?>
+    <li class="nav-item">
+        <a class="nav-link text-capitalize" href = "/book/index?selected_category=<?php echo $category['name']; ?>"><?php echo $category['name']; ?></a>
+    </li>
+       
+        <?php
+    }
+    ?>
+</ul>
+
+<form method="get" action="/book/index" class="d-flex" >
     <input type="text" class="form-control" id="search"
            placeholder="Search book" name="search_book_name"
            value="<?php echo $search_book_name; ?>"
     />
     <button type="submit" class="btn btn-primary"> Search </button>
 </form>
-<div class="mt-5 d-flex flex-column">
-    <?php
-    foreach ($categories as $category) {
-    ?>
-    <div>
-        <a href = "/book/index?selected_category=<?php echo $category['name']; ?>"><?php echo $category['name']; ?></a>
-    </div>
-       
-        <?php
-    }
-    ?>
-</div>
-<form method="POST" action="/book/hireBook">
+
+<form method="POST" action="/book/hireBook" class="mt-3">
 <?php if (!Auth::member(100)): ?>
-<button type="submit" name="submit">Check out</button>
+<button type="submit" name="submit" class="btn btn-success" >Check out</button>
 <?php endif; ?>
 
+<?php if (Auth::member(100)): ?>
 <table class = "table">
     <thead>
     <tr>
@@ -84,6 +87,37 @@ img{
         <?php
     }
     ?>
-    </tbody>
-</table>   
+     </tbody>
+</table> 
+<?php endif; ?>
+
+<?php if (!Auth::member(100)): ?>
+    <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+    <ul class="list-group shadow">
+    <?php
+    foreach($books as $book) {
+        ?>
+ <li class="list-group-item">
+ <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+ </div><img src="<?php echo $book['url']; ?>" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+            <div class="media-body order-2 order-lg-1">
+              <h5 class="mt-0 font-weight-bold mt-2">  <?php echo $book['title']; ?></h5>
+              <p class="font-italic text-muted mb-0 small">   <?php echo $book['author']; ?></p>
+              <div class="d-flex align-items-center justify-content-between mt-1">
+                <h6 class="font-weight-bold my-2">  <?php echo $book['price']; ?> USD</h6>
+                <input type="checkbox" id="<?php echo $book['id']; ?>" value="<?php echo $book['id']; ?>" name="arrayBook[]" hidden/>
+                <label for="<?php echo $book['id']; ?>">Select</label>
+              </div>
+           
+          </div>
+        </li>
+        <?php
+    }
+    ?>
+      </ul>
+    </div>
+  </div>
+<?php endif; ?>   
 </form>

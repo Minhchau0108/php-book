@@ -24,12 +24,12 @@
     ?>
     </tbody>
 </table>
-<div>
-  <h3> Your Phone</h1>  <?php echo $phone; ?>
+<div class="d-flex">
+  <h6> Your Phone: <?php echo $phone; ?></h6>  
 </div>
-<div>
-<h3> Your Address</h1>  <?php echo $address; ?>  
+<div class="d-flex">
+  <h6> Your Address: <?php echo $address; ?>  </h6>  
 </div>
-<div>
+<div class="mt-4">
   <a href="/"> Continue to booking </a>
 </div>

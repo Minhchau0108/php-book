@@ -111,6 +111,7 @@ class Controller_Book extends Controller_Template {
                 $book->title = Input::param('title');
                 $book->author = Input::param('author');
                 $book->price = Input::param('price');
+                $book->url = Input::param('url');
                 $book->category_id= Input::param('category');
 
                 Log::debug('selected category '.$book->category_id);
@@ -153,6 +154,7 @@ class Controller_Book extends Controller_Template {
                   $book->title = Input::param('title'); 
                   $book->author = Input::param('author'); 
                   $book->price = Input::param('price'); 
+                  $book->url = Input::param('url');
                   $book->save(); 
                   Response::redirect('book'); 
                } catch (Orm\ValidationFailed $e) { 

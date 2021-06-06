@@ -4,12 +4,7 @@ img{
     height: 100px;
 }
 </style>
-<div>
-    User Id : <?php echo Auth::get_user_id()[1] ?>
-</div>
-<div>
-    Username : <?php echo Auth::get_screen_name() ?>
-</div>
+
 
 <?php if (count($books) == 0): ?>
     <div> Your cart is empty</div>
@@ -17,11 +12,11 @@ img{
 <?php
   if (count($books) > 0):
 ?>
-<h3>List books</div>
+<h3>YOUR SELECTION</div>
 <table class = "table">
     <thead>
     <tr>
-        <th>Book Id</th>
+        <th>Book ID</th>
         <th>Image</th>
         <th>Title</th>
         <th>Author</th>
@@ -50,12 +45,11 @@ img{
   <div class="form-group">
     <label for="exampleInputEmail1">Phone Contact</label>
     <input type="text" class="form-control" name="phone">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputAddress">Shipping Address</label>
     <input type="text" class="form-control" name="address">
   </div>
-  <button type="submit" class="btn btn-primary">Send</button>
+  <button type="submit" class="btn btn-primary mt-3">Send</button>
 </form>
 <?php endif; ?>

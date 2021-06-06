@@ -1,16 +1,14 @@
+
 <div>
-    User Id : <?php echo Auth::get_user_id()[1] ?>
+    Hello, customer <?php echo Auth::get_screen_name() ?>
 </div>
 <div>
-    Username : <?php echo Auth::get_screen_name() ?>
-</div>
-<div>
-    Tong so don hang da dat la : <?php echo count($forms); ?>
+    Your total order : <?php echo count($forms); ?>
 </div>
 <table class = "table">
     <thead>
     <tr>
-        <th>Form Id</th>
+        <th>Order Id</th>
         <th>Address</th>
         <th>Contact</th>
         <th>View detail</th>
